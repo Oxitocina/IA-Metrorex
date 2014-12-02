@@ -19,7 +19,18 @@ def main():
 				"Parc": (315, 195), "Laminorului": (258, 163.5)}
 	
     circulos = []
-    estaciones = [] #Chaparselo a mano
+    estaciones = [Estacion("Pantelimon", 0, {"3":("Teclu")}, (933, 394.5)), Estacion("Teclu", 0, {"3":("Pantelimon", "1918")}, (895.5,558)),
+					Estacion("1918", 0, {"3":("Nicolae","Teclu")}, (822, 540)),Estacion("Nicolae", 1, {"3":("Dristor","1918"),"1":("Dristor", "Titan")}, (933, 394.5)),
+					 Estacion("Dristor", 2, {"3":("Nicolae", "Mihai"), "1":("Nicolae", "Mihai", "Muncii")},(682.5, 504)),
+					 Estacion("Mihai", 0, {"1":("Dristor", "Timpuri"), "3":("Nicolae", "Mihai", "Muncii")},(637.5, 553.5)),
+					 Estacion("Timpuri", 0, {"1":("Mihai", "Unirii"), "3":("Mihai", "Unirii")}, (598.5, 514.5)),
+					 Estacion("Unirii", 3, {"1":("Izbor", "Timpuri"), "2": ("Universitate", "Tineretului"), "3":("Izbor", "Timpuri")},  (546, 459)),
+					 Estacion("Izbor", 0, {"1":("Eroilor", "Unirii"), "3":("Eroilor", "Unirii")}, (493.5, 435)),
+					 Estacion("Eroilor", 4, {"1":("Grozavesti", "Izbor"), "3":("Politehnica", "Izbor")}, (433.5, 403.5)),
+					 Estacion("Politehnica", 0, {"3":("Eroilor", "Lujerului")},(358.5, 420)),
+					 Estacion("Lujerului", 0, {"3":("Gorjului", "Politehnica")},(286.5, 433.5)),
+					 Estacion("Gorjului", 0, {"3":("Lujerului", "Pacii")},(217.5, 447)),
+					 Estacion("Pacii", 0, {"3":("Preciziei", "Gorjului")},(150, 460.5)), Estacion("Preciziei", 0, {"3":("Pacii")},(85.5, 471))]
     for i in puntos.values():
         circulos.append(Circle(Point(i[0],i[1]),6.5))
     c = Circle(Point(515.5,365.5), 6.5)
