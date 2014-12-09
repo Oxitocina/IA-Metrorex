@@ -13,6 +13,6 @@ class Estacion():
 		
 	def get_g(self, estacion):
 		
-		return hypot(estacion.punto.getX() - self.punto.getX(), estacion.punto.getY() - self.punto.getY())
+		return hypot(estacion.punto[0] - self.punto[0], estacion.punto[1] - self.punto[1])
 	
 		
