@@ -77,6 +77,9 @@ class Algoritmo():
 								if a < j.valor:
 									j.valor = a
 									j.padre = papito
+									for swag in self.cosas_a_cambiar:
+										if swag[1] == j.nombre:
+											self.cosas_a_cambiar.remove(swag)
 									if i[0] != self.linea_actual:
 										print("Transbordo" + str(j.padre.transbordo))
 										j.valor += j.padre.transbordo
@@ -102,7 +105,6 @@ class Algoritmo():
 			for culo in self.cosas_a_cambiar:
 				if culo[1] == minimo.nombre:
 					self.linea_actual = culo[0]
-			self.cosas_a_cambiar = []
 		if minimo.padre != None:	
 			minimo.g = minimo.padre.g + minimo.get_g(minimo.padre)
 		self.cerrada.append(minimo)
