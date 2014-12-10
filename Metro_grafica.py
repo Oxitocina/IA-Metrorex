@@ -58,14 +58,24 @@ def main():
         i.setOutline("#33FF00")
         i.setWidth("3")
         #i.draw(ventana)
-    comienzo = ventana.getMouse()
-    
-    circulo_inicio, estacion_inicio = ranguizador(circulos, estaciones, comienzo)
-    circulo_inicio.draw(ventana)
-    final = ventana.getMouse()
-    circulo_final, estacion_final = ranguizador(circulos, estaciones, final)
-    circulo_final.draw(ventana)
-    
+    bien = False
+    while not bien:
+        bien = True
+        try:
+            comienzo = ventana.getMouse()
+            circulo_inicio, estacion_inicio = ranguizador(circulos, estaciones, comienzo)
+            circulo_inicio.draw(ventana)
+        except AttributeError:
+            bien = False
+    bien = False
+    while not bien:
+        bien = True
+        try:
+            final = ventana.getMouse()
+            circulo_final, estacion_final = ranguizador(circulos, estaciones, final)
+            circulo_final.draw(ventana)
+        except AttributeError:
+            bien = False
     if len(estacion_inicio.lineas_estaciones.items()) > 1:
         linea = input("Introduzca la linea por la que desea entrar (" + str(list(estacion_inicio.lineas_estaciones.keys())) + "): ")
     else:
