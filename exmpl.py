@@ -20,6 +20,22 @@ def main():
     d.draw(win)
     e.draw(win)
     line.draw(win)
+    rectangulo = Rectangle(Point(100,200), Point(500,400))
+    rectangulo.setFill("Grey")
+    rectangulo.draw(win)
+    pene2 = Text(Point(300,250), "Introduzca la linea por la que desea entrar:")
+    pene2.draw(win)
+    hola = Entry(Point(300,300), 25)
+    hola.setFill("White")
+    hola.draw(win)
+    rectangulo2 = Rectangle(Point(260,340), Point(350,370))
+    rectangulo2.setFill("Grey")
+    rectangulo2.draw(win)
+    pene3 = Text(Point(305,355), "Aceptar")
+    pene3.draw(win)
+    win.getMouse()
+    pene = Text(Point(500,500), hola.getText())
+    pene.draw(win)
     win.getMouse() # Pause to view result
     win.close()    # Close window when done
 

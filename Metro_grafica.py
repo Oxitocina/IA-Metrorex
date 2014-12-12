@@ -25,9 +25,9 @@ def main():
 					 Estacion("Dristor", 200, {"3":("Nicolae", "Mihai"), "1":("Nicolae", "Mihai", "Muncii")},(682.5, 504)),
 					 Estacion("Mihai", 0, {"1":("Dristor", "Timpuri"), "3":("Dristor", "Timpuri")},(637.5, 553.5)),
 					 Estacion("Timpuri", 0, {"1":("Mihai", "Unirii"), "3":("Mihai", "Unirii")}, (598.5, 514.5)),
-					 Estacion("Unirii", 300, {"1":("Izbor", "Timpuri"), "2": ("Universitate", "Tineretului"), "3":("Izbor", "Timpuri")},  (546, 459)),
-					 Estacion("Izbor", 0, {"1":("Eroilor", "Unirii"), "3":("Eroilor", "Unirii")}, (493.5, 435)),
-					 Estacion("Eroilor", 400, {"1":("Grozavesti", "Izbor"), "3":("Politehnica", "Izbor")}, (433.5, 403.5)),
+					 Estacion("Unirii", 400, {"1":("Izvor", "Timpuri"), "2": ("Universitate", "Tineretului"), "3":("Izvor", "Timpuri")},  (546, 459)),
+					 Estacion("Izvor", 0, {"1":("Eroilor", "Unirii"), "3":("Eroilor", "Unirii")}, (493.5, 435)),
+					 Estacion("Eroilor", 200, {"1":("Grozavesti", "Izvor"), "3":("Politehnica", "Izvor")}, (433.5, 403.5)),
 					 Estacion("Politehnica", 0, {"3":("Eroilor", "Lujerului")},(358.5, 420)),
 					 Estacion("Lujerului", 0, {"3":("Gorjului", "Politehnica")},(286.5, 433.5)),
 					 Estacion("Gorjului", 0, {"3":("Lujerului", "Pacii")},(217.5, 447)),
@@ -36,14 +36,14 @@ def main():
 					 Estacion("Costin", 0, {"1":("Republica", "Titan")}, (813, 450)), Estacion("Titan", 0, {"1":("Nicolae", "Costin")},(784.5, 486)),
 					 Estacion("Muncii", 0, {"1":("Dristor", "Lancului")},(684, 447)), Estacion("Lancului", 0, {"1":("Muncii", "Obor")},(682, 388.5)),
 					 Estacion("Obor", 0, {"1":("Stefan", "Lancului")},(627, 361.5)), Estacion("Stefan", 0, {"1":("Victoriei", "Obor")},(565, 332.5)),
-					 Estacion("Victoriei", 500, {"1":("Stefan", "Gara"), "2": ("Romana", "Aviatorilor")},(502.5, 309)),
-					 Estacion("Gara", 600, {"1":("Victoriei", "Basarab"), "4": ("Basarab", None)},(450, 273)),
-					 Estacion("Basarab", 0, {"1":("Crangasi", "Gara"), "4": ("Gara", "Grivita")}, (415.5, 255)),
+					 Estacion("Victoriei", 300, {"1":("Stefan", "Gara"), "2": ("Romana", "Aviatorilor")},(502.5, 309)),
+					 Estacion("Gara", 200, {"1":("Victoriei", "Basarab"), "4": ("Basarab", None)},(450, 273)),
+					 Estacion("Basarab", 100, {"1":("Crangasi", "Gara"), "4": ("Gara", "Grivita")}, (415.5, 255)),
 					 Estacion("Crangasi", 0, {"1":("Basarab", "Petrache")},(367.5, 294)), Estacion("Petrache", 0, {"1":("Crangasi", "Grozavesti")},(327, 333)),
 					 Estacion("Grozavesti", 0, {"1":("Eroilor", "Petrache")},(384, 367.5)),Estacion("Berceni", 0, {"2":("Dimitrie", None)},(711, 726)),
 					 Estacion("Dimitrie", 0, {"2":("Berceni", "Patriei")},(669, 696)), Estacion("Patriei", 0, {"2":("Dimitrie", "Sudului")},(634.5, 670.5)),
 					 Estacion("Sudului", 0, {"2":("Constantin", "Patriei")},(598.5, 643.5)), Estacion("Constantin", 0, {"2":("Eroii", "Sudului")},(561, 616.5)),
-					 Estacion("Eroii", 0, {"2":("Constantin", "Tiniretului")},(556.5, 564)), Estacion("Tineretului", 0, {"2":("Eroii", "Unirii")},(555, 510)),
+					 Estacion("Eroii", 0, {"2":("Constantin", "Tineretului")},(556.5, 564)), Estacion("Tineretului", 0, {"2":("Eroii", "Unirii")},(555, 510)),
 					 Estacion("Universitate", 0, {"2":("Unirii", "Romana")},(535.5, 409.5)), Estacion("Romana", 0, {"2":("Universitate", "Victoriei")}, (516, 366)),
 					 Estacion("Aviatorilor", 0, {"2":("Aurel", "Victoriei")}, (520.5, 246)), Estacion("Aurel",0, {"2": ("Aviatorilor", "Pipera")}, (544.5, 180)),
 					 Estacion("Pipera", 0, {"2":("Aurel", None)}, (598.5, 141)), Estacion("Grivita", 0, {"4": ("Basarab", "Mai")},(382.5, 231)),
@@ -77,7 +77,10 @@ def main():
         except AttributeError:
             bien = False
     if len(estacion_inicio.lineas_estaciones.items()) > 1:
-        linea = input("Introduzca la linea por la que desea entrar (" + str(list(estacion_inicio.lineas_estaciones.keys())) + "): ")
+        linea = prompt_cutre(ventana, estacion_inicio)
+        while not linea in list(estacion_inicio.lineas_estaciones.keys()):
+            linea = prompt_cutre(ventana, estacion_inicio)
+		
     else:
         linea = list(estacion_inicio.lineas_estaciones.keys())[0]
     
@@ -92,7 +95,8 @@ def main():
         linea.draw(ventana)
     
     ventana.getMouse() 
-    ventana.close() 
+    ventana.close()
+    main() 
 def ranguizador(circulos, estaciones, punto):
 	rango = ((punto.getX()-6.5, punto.getX()+6.5), (punto.getY()-6.5, punto.getY()+6.5))
 	circulo = None
@@ -104,5 +108,25 @@ def ranguizador(circulos, estaciones, punto):
 		if j.punto[0]>=rango[0][0] and j.punto[0]<=rango[0][1] and j.punto[1]>=rango[1][0] and j.punto[1]<=rango[1][1]:
 			estacion = j
 	return circulo, estacion
-		 
+def prompt_cutre(ventana, estacion_inicio):
+    rectangulo = Rectangle(Point(100,200), Point(500,400))
+    rectangulo.setFill("Grey")
+    rectangulo.draw(ventana)
+    texto = Text(Point(300,250), "Introduzca la linea por la que desea entrar (" + str(list(estacion_inicio.lineas_estaciones.keys())) + "): ")
+    texto.draw(ventana)
+    hola = Entry(Point(300,300), 25)
+    hola.setFill("White")
+    hola.draw(ventana)
+    rectangulo2 = Rectangle(Point(260,340), Point(350,370))
+    rectangulo2.setFill("Grey")
+    rectangulo2.draw(ventana)
+    texto2 = Text(Point(305,355), "Aceptar")
+    texto2.draw(ventana)
+    ventana.getMouse()
+    rectangulo.undraw()
+    texto.undraw()
+    hola.undraw()
+    rectangulo2.undraw()
+    texto2.undraw()
+    return hola.getText()
 main()
