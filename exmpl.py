@@ -23,7 +23,7 @@ def main():
     rectangulo = Rectangle(Point(100,200), Point(500,400))
     rectangulo.setFill("Grey")
     rectangulo.draw(win)
-    pene2 = Text(Point(300,250), "Introduzca la linea por la que desea entrar:")
+    pene2 = Text(Point(300,250), "Introduzca la linea por la que desea entrar (" + str(list(estacion_inicio.lineas_estaciones.keys())) + "): ")
     pene2.draw(win)
     hola = Entry(Point(300,300), 25)
     hola.setFill("White")

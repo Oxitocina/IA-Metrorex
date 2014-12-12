@@ -87,7 +87,6 @@ def main():
     lets_go = Algoritmo(estaciones, estacion_inicio, estacion_final, linea)
     lets_go.paso_1()
     camino = lets_go.camino_al_destino()
-    print (camino)
     for i in range(0,len(camino)-1):
         linea = Line(Point(camino[i][0], camino[i][1]), Point(camino[i+1][0], camino[i+1][1]))
         linea.setOutline("#33FF00")
